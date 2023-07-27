@@ -1,0 +1,17 @@
+This code is a simple example of a browser extension that allows users to save URLs to a list and open them in new tabs. It uses localStorage to store the leads so that they persist even when the browser is closed and reopened.
+
+The render function is responsible for displaying the leads as clickable links in an unordered list on the webpage.
+The tabBtn element's click event listener uses the Chrome API to get the currently active tab's URL and adds it to the leads list.
+The deleteBtn element's double-click event listener clears the stored leads and resets the myLeads array. 
+Finally, the inputBtn element's click event listener takes the input value from inputEl, adds it to the leads list, and updates the display.
+
+
+JSON.parse(localStorage.getItem("myLeads")); is a line of code that retrieves data from the web browser's local storage and parses it as a JavaScript object. Here's what each part of the code does:
+
+localStorage: This is an object that provides a way to store key-value pairs in the web browser. It allows data to be stored locally on the user's computer across browser sessions.
+
+getItem("myLeads"): This is a method of the localStorage object that retrieves the value associated with the key "myLeads" from the local storage. In this case, "myLeads" is used as the key to retrieve the data that was previously stored under this key.
+
+JSON.parse(): This is a built-in JavaScript method that takes a JSON-formatted string and converts it into a JavaScript object. Since localStorage stores data as strings, we use JSON.parse() to convert the retrieved string back into its original JavaScript object form.
+
+documentaddEventListener("click", function () {}) // 

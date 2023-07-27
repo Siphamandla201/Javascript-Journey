@@ -1,0 +1,6 @@
+This code sets up a counting app that uses two buttons and two HTML elements with IDs "save-el" and "count-el." The increment function increases the count by 1 and updates the displayed count value in the "count-el" element. The save function appends the current count value with a hyphen and space to the content of the "save-el" element and then resets the count to 0
+
+
+count += 1; is equivalent to count = count + 1;. It increments the value of the 
+
+textContent is a property of DOM elements in JavaScript that represents the text content of an element, including any nested elements as plain text. It allows you to get or set the text content of an element.

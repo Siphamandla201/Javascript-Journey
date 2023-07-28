@@ -14,6 +14,9 @@ main {
     margin-left: 40%;
     padding-top: 3%;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 h1 {
@@ -39,10 +42,28 @@ button {
 }
 
 #increment-btn {
-    background: darkred;
-}
-
-#save-btn {
     background: darkgreen;
 }
 
+#decrement {
+    background: darkorange;
+}
+
+#save-btn {
+    background: darkred;
+}
+
+#passenger {
+    margin-top: 10px;
+    width: 65px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid black;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+}
+
+#save-el {
+    font-size: 20px;
+}

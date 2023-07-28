@@ -4,3 +4,11 @@ This code sets up a counting app that uses two buttons and two HTML elements wit
 count += 1; is equivalent to count = count + 1;. It increments the value of the 
 
 textContent is a property of DOM elements in JavaScript that represents the text content of an element as plain text. It allows you to get or set the text content of an element.
+
+
+
+const myArray = [1, 2, 3, 4, 5];
+const lastItem = myArray.pop();
+console.log(lastItem); // Output: 5
+console.log(myArray);
+

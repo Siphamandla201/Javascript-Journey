@@ -56,7 +56,7 @@ function startGame() {
     let dealerFirstCard = getRandomCard();
     let dealerSecondCard = getRandomCard();
     isAlive = true
-
+    
     playerCards = [playerFirstCard, playerSecondCard]
     playerSum = playerFirstCard + playerSecondCard;
     
@@ -73,7 +73,7 @@ function renderGame() {
     }
     
     playerSumEl.textContent = "Player Sum : " + playerSum;
-
+    
     // Showing Dealer Cards
     dealerCardsEl.textContent = "Dealer Cards : ";
     for (let i = 0; i < dealerCards.length; i++) {
@@ -88,29 +88,30 @@ function renderGame() {
 
 // Function to draw a new card
 function Hit() {
-    if (isAlive === true && hasBlackJack === false) {
+    if (isAlive && !hasBlackJack && !playerDone) { // Check if the player is alive, doesn't have Blackjack, and hasn't stood yet
         let extraCard = getRandomCard();
-
-        if(playerDone === false){
-            playerSum += extraCard;
-            playerCards.push(extraCard);
-
-        } else if(playerDone === true) {
-            dealerSum += extraCard;
-            dealerCards.push(extraCard);
-        }
-        
+        playerSum += extraCard;
+        playerCards.push(extraCard);
         renderGame();
-        cardHandling()
+        cardHandling(); // Check the game status after the new card is drawn
     }
 }
 
 
+// Function to indicate the player has chosen to stand (not draw more cards)
 function noHit() {
-    if(isAlive === true && hasBlackJack === false ) {
-        playerDone = true;
+    if (isAlive && !hasBlackJack && !playerDone) { // Check if the player is alive, doesn't have Blackjack, and hasn't stood yet
+        playerDone = true; // Set the playerDone flag to indicate the player has stood
+        cardHandling(); // Check the game status after the player has stood
     }
+}
 
+function dealerDrawCard() {
+    if (!dealerDone && dealerSum < 17) {
+        let extraCard = getRandomCard();
+        dealerSum += extraCard;
+        dealerCards.push(extraCard);
+    }
 }
 
 
@@ -121,115 +122,46 @@ function cardHandling() {
         hasBlackJack = true;
         isAlive = true;
         playerDone = true;
-    }
-    
-    // Scenario 2: Player is still in the game and can choose to Hit or No Hit
-    if (playerSum <= 20 && !hasBlackJack) {
+
+    } else if (playerSum <= 20 && !hasBlackJack) { // Scenario 2: Player is still in the game and can choose to Hit or No Hit
         message = "Hit Or No Hit";
         isAlive = true;
-    }
+        playerDone = false;
 
-    // Scenario 3: Player's sum exceeds 21 (bust)
-    if (playerSum > 21) {
+    } else if (playerSum > 21) { // Scenario 3: Player's sum exceeds 21 (bust)
         message = "Busted! You're out of the game!";
         isAlive = false;
         playerDone = true;
-    }
-
-    // Scenario 4: Player chooses No Hit (stands)
-    if (isAlive && !hasBlackJack && playerDone) {
-        message = "You stood. Dealer's turn.";
-    }
-
-    // Scenario 5: Dealer's turn - Dealer's sum is less than 17
-    if (!dealerDone && dealerSum < 17) {
-        // Dealer draws a new card
-    }
     
-    // Scenario 6: Dealer's turn - Dealer has Blackjack
-    if (dealerSum === 21 && dealerCards.length === 2) {
+    } else if (isAlive && !hasBlackJack && playerDone) { // Scenario 4: Player chooses No Hit (stands)
+        message = "You stood. Dealer's turn.";
+    } else if (!dealerDone && dealerSum < 17) { // Scenario 5: Dealer's turn - Dealer's sum is less than 17
+        dealerDrawCard();
+    
+    } else if (dealerSum === 21 && dealerCards.length === 2) { // Scenario 6: Dealer's turn - Dealer has Blackjack
         message = "Dealer has Blackjack! You Lose!";
         dealerHasBlackJack = true;
         dealerIsAlive = true;
         dealerDone = true;
-    }
-
-    // Scenario 7: Dealer's turn - Dealer's sum exceeds 21 (bust)
-    if (dealerSum > 21) {
+    
+    } else if (dealerSum > 21) { // Scenario 7: Dealer's turn - Dealer's sum exceeds 21 (bust)
         message = "Dealer Busted! You Win!";
         dealerIsAlive = false;
         dealerDone = true;
-    }
-
-    // Scenario 8: Both player and dealer are done drawing cards, compare sums
-    if (playerDone && dealerDone) {
-        if (playerSum === dealerSum) {
-            message = "It's a draw!";
-        } else if (playerSum > dealerSum) {
-            message = "You Win!";
-        } else {
-            message = "You Lose!";
+    
+    } else { // Scenario 8: Both player and dealer are done drawing cards, compare sums
+        if (playerDone && dealerDone) {
+            if (playerSum === dealerSum) {
+                message = "It's a draw!";
+            } else if (playerSum > dealerSum && playerSum <= 21) { // Include the condition that the player's sum is less than or equal to 21
+                message = "You Win!";
+            } else {
+                message = "You Lose!";
+            }
         }
     }
     
     messageEl.textContent = message;
 }
-
-
-
-
-
-// Set player name and chips on the webpage
-// playerEl.textContent = player.name + ": $" + player.chips;
-
-
-// // Function to start the game
-// function startGame() {
-//     isAlive = true;
-//     let firstCard = getRandomCard();
-//     let secondCard = getRandomCard();
-//     playerCards = [firstCard, secondCard];
-//     playerSum = firstCard + secondCard;
-//     renderGame();
-// }
-
-// // Function to draw a new card
-// function newCard() {
-//     if (isAlive === true && hasBlackJack === false) {
-//         let card = getRandomCard();
-//         playerSum += card;
-//         playerCards.push(card);
-//         renderGame();
-//     }
-// }
-
-// function noHit() {
-//     if (playerSum <= dealerSum) {
-//         message = "Do you want to draw a new card?";
-//         renderGame();
-//     } 
-// }
-
-
-// // Function to render the game state on the webpage
-// function renderGame() {
-//     cardsEl.textContent = "Cards: ";
-//     for (let i = 0; i < playerCards.length; i++) {
-//         cardsEl.textContent += cards[i] + " ";
-//     }
-    
-//     sumEl.textContent = "Sum: " + playerSum;
-    
-//     if (playerSum <= 20) {
-//         noHit(); 
-//     } else if (playerSum === 21) {
-//         message = "You've got Blackjack!";
-//         hasBlackJack = true;
-//     } else {
-//         message = "You're out of the game!";
-//         isAlive = false;
-//     }
-//     messageEl.textContent = message;
-// }
 
 

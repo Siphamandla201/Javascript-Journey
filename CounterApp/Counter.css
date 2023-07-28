@@ -10,9 +10,9 @@ body {
 main {
     background: rgb(59, 151, 182);
     width: 350px;
-    height: 400px;
+    height: 450px;
     margin-left: 40%;
-    padding-top: 3%;
+    padding-top: 1%;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -66,4 +66,13 @@ button {
 
 #save-el {
     font-size: 20px;
+}
+
+#passenger-btn {
+    background : rgb(137, 193, 211)
+}
+
+#passengerList {
+    font-size: 12px;
+    padding-top: 20px;
 }

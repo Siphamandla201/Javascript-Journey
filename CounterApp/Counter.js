@@ -8,10 +8,12 @@ let saveEl = document.getElementById("save-el");
 // Get the element with ID "count-el" and store it in the countEl variable
 let countEl = document.getElementById("count-el");
 
+let passengerBtn = document.getElementById("passenger-btn");
+
+
 // Function to increment the count and update the countEl text content
 function increment() {
-    count += 1; // Increment the count by 1
-    countEl.textContent = count; // Update the text content of countEl to the new count value
+    countEl.textContent = count += 1; // Increment the count by 1
 }
 
 // Function to increment the count and update the countEl text content
@@ -41,6 +43,13 @@ function save() {
 
     console.log(`Total : ${people}`);
     console.log(`Total : ${totalPeople}`);
+}
+
+
+function SeePassengers() {
+    let passengerList = document.getElementById("passengerList");
+
+    passengerList.textContent = people
 }
 
 

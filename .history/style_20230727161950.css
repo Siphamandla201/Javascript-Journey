@@ -1,0 +1,17 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-links {
+    display: flex;
+    list-style: none;
+    ju
+}
+
+li > a {
+    text-decoration: none;
+    color: black;
+}

@@ -1,0 +1,19 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-links {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    padding: 0%;
+    width: 350;
+}
+
+li > a {
+    text-decoration: none;
+    color: black;
+}

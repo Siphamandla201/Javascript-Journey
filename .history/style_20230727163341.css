@@ -1,0 +1,37 @@
+body {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    padding-top: 10px;
+    padding-right: 50px;
+    background: rgb(77, 77, 76);
+}
+
+div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.game-links {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    padding: 0%;
+    padding-top: 20px;
+    width: 350px;
+}
+
+li > a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+
+li > a:hover {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+p {
+    width: 70;
+}

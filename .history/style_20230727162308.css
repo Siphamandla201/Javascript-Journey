@@ -1,0 +1,24 @@
+body {
+    display: flex;
+    flex-direction: column;
+    padding: 200px;
+    padd
+}
+
+div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.game-links {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    padding: 0%;
+    width: 350px;
+}
+
+li > a {
+    text-decoration: none;
+    color: black;
+}

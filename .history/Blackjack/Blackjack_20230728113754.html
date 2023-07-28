@@ -1,0 +1,26 @@
+<html>
+    <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+        <link rel="stylesheet" href="Blackjack.css">
+    </head>
+    <body>
+        <h1>Blackjack</h1>
+        <p id="message-el">Want to play a round?</p>
+        <div id="players">
+            <div>
+                <p id="player-el">Player Cards:</p>
+                <p id="sum-el">Player Sum:</p>
+            </div>
+            <div>
+                <p id="dealerCards-el">Dealer Cards:</p>
+                <p id="dealerSum-el">Dealer Sum:</p>
+            </div>
+        </div>
+        <div>
+            <button onclick="startGame()">START GAME</button>
+            <button onclick="newCard()">HIT</button>
+            <button onclick="noHit()">NO HIT</button>
+        </div>
+        <!-- <p id="player-el"></p> -->
+        <script src="Blackjack.js"></script>
+    </body>
+</html>
